@@ -75,8 +75,14 @@ class Tprojection:
 
     def _check_dtype_consistency(self):
         def set_dtype(var):
-            mydtype = np.where(getattr(self, var + '_type') == 'categorical', str, float)
-            self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(mydtype) 
+            mydtype = str if getattr(self, var + '_type') == 'categorical' else float  
+            self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(mydtype).copy()
+#            if getattr(self, var + '_type') == 'categorical':
+##                self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(str).copy()
+##                mydtype = str
+#            else:
+##                self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(float).copy()
+##                mydtype 
         set_dtype("feature")
         set_dtype("target")
 
@@ -104,6 +110,7 @@ class Tprojection:
         dg = pd.DataFrame()
         replace = np.where(self.n_estimators > 1, True, False)
         count = self.df.groupby(feature)[self.target].count()
+#        self.df.copy().groupby(self.df[feature])[self.target].count().index
         for ii in range(self.n_estimators):
             dtmp = self.df.sample(frac=1, replace=replace)
             dg = dg.append(dtmp.groupby(feature)["target_san"].mean())
