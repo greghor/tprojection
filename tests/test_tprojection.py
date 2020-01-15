@@ -46,10 +46,16 @@ def test_infer_age_fare_as_continuous():
 
 
 
-df = pd.DataFrame()
-df['target'] = randint(0, 2, 1000) 
-df['feature'] = randint(0, 5, 1000)
-df['feature'] = df["feature"].astype(str)
+##{
+def test_categorical_feature_type_turned_to_obj():
+    df = pd.DataFrame()
+    df['target'] = randint(0, 2, 1000) 
+    df['feature'] = randint(0, 5, 1000)
 
-tproj  = Tprojection(df, 'target', 'feature', n_estimators=100)
-tproj.plot()    
+    tproj  = Tprojection(df, 'target', 'feature')
+    assert isinstance(tproj.df.target.dtype, object), "feature type shall have turned to object"
+    tproj._cat2all_prep()
+    assert isinstance(tproj.dg.index.dtype, object), "plotted data index type shall bject"
+##}
+
+
