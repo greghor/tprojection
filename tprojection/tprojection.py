@@ -77,12 +77,6 @@ class Tprojection:
         def set_dtype(var):
             mydtype = str if getattr(self, var + '_type') == 'categorical' else float  
             self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(mydtype).copy()
-#            if getattr(self, var + '_type') == 'categorical':
-##                self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(str).copy()
-##                mydtype = str
-#            else:
-##                self.df[getattr(self, var)] = self.df[getattr(self, var)].astype(float).copy()
-##                mydtype 
         set_dtype("feature")
         set_dtype("target")
 
@@ -110,7 +104,6 @@ class Tprojection:
         dg = pd.DataFrame()
         replace = np.where(self.n_estimators > 1, True, False)
         count = self.df.groupby(feature)[self.target].count()
-#        self.df.copy().groupby(self.df[feature])[self.target].count().index
         for ii in range(self.n_estimators):
             dtmp = self.df.sample(frac=1, replace=replace)
             dg = dg.append(dtmp.groupby(feature)["target_san"].mean())
@@ -122,23 +115,14 @@ class Tprojection:
     def _cat2all_prep(self):
 
         if self.nb_modalities:
-            dg = self.df.groupby(self.feature).agg({"target_san": ["count", "mean"]})
-            dg.columns = ["count", "mean"]
+            self.encoding = ut.get_encoding(self.df, self.target, self.feature, self.nb_modalities)
         else:
-            dg = self._bootstrap(self.feature)
-        baseline = self.df["target_san"].mean() 
+            self.encoding = {v: v for v in self.df[self.feature].unique()}
+        self.df[self.feature + "_encoded"] = self.df[self.feature].map(self.encoding)
+        dg = self._bootstrap(self.feature)
+        dg['baseline'] = self.df["target_san"].mean() 
         dg.sort_values(by="count", ascending=False, inplace=True)
-        segment = self.feature
-        if self.nb_modalities:
-            assert(self.nb_modalities < len(self.df[self.feature].unique()), "the number of encoded modalities shall be lower than the number of unique element in {}".format(self.feature))
-            self.encoding = self._get_encoding(dg)
-            self.df[self.feature + "_encoded"] = self.df[self.feature].map(self.encoding)
-            dg = self._bootstrap(self.feature + "_encoded")
-            baseline = self.df["target_san"].mean() 
-            dg.sort_values(by="mean", ascending=False, inplace=True)
-            segment = self.feature + "_encoded"
-
-        dg["baseline"] = baseline
+        segment = self.feature + "_encoded" 
 
         self.dg = dg
         self.segment = segment
