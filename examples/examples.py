@@ -25,7 +25,7 @@ tproj.plot()
 ##}
 
 ##{ example of category to category where we use a dummy encoding since the number of original features modalities is too high
-tproj = Tprojection(df, target, "cabin", feature_type="categorical", nb_modalities=5)
+tproj = Tprojection(df, target, "cabin", feature_type="categorical", nb_modalities=5, n_estimators=100)
 tproj.plot()
 print(tproj.encoding) # contains the mapping between the original modalities and the encoded modalities
 ##}

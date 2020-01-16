@@ -59,3 +59,8 @@ def test_categorical_feature_type_turned_to_obj():
 ##}
 
 
+##{
+df = load_data("titanic")
+target = "survived"
+tproj = Tprojection(df, target, "name", nb_modalities=10)
+##}
