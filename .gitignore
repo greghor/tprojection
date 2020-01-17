@@ -106,3 +106,4 @@ ENV/
 
 # perso
 data/   
+.DS_STORE               
