@@ -13,7 +13,7 @@ tprojection
         :target: https://tprojection.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-
+https://travis-ci.com/greghor/tprojection.svg?branch=master
 
 
 study univariate relations
