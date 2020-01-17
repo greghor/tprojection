@@ -66,7 +66,6 @@ class Tprojection:
 
         plt.tight_layout()
         plt.show(block=False)
-
     def _infer_type(self):
         if self.target_type == "":
             self.target_type = np.where(ut.is_continuous(self.df[self.target], self.continuous_threshold), "continuous", "categorical")
@@ -85,20 +84,10 @@ class Tprojection:
             self.target_modality = self.df[self.target].value_counts().sort_values().index[0]
 
     def _sanitize_target(self):
-        self.df["target_san"] = np.where(self.df[self.target]==self.target_modality, 1, 0)
-
-    def _get_encoding(self, dg):
-        dg.sort_values(by="mean", ascending=False, inplace=True)
-        dg["cumratio"] = dg["count"].cumsum()/dg["count"].sum()
-        slicer = np.linspace(0, 1, self.nb_modalities + 1)
-        ii = 1
-        mymap = {"g" + str(ii+1): [] for ii in range(self.nb_modalities)}
-        for row in dg.iterrows():
-            if row[1]["cumratio"] > slicer[ii]:
-                ii+=1
-            mymap["g"+str(ii)].append(row[0])
-        res = {moda: k for k, vals in mymap.items() for moda in vals}
-        return res
+        if self.target_type == 'categorical':
+            self.df["target_san"] = np.where(self.df[self.target]==self.target_modality, 1, 0)
+        else:
+            self.df['target_san'] = self.df[self.target]
 
     def _bootstrap(self, feature):
         dg = pd.DataFrame()
@@ -115,11 +104,11 @@ class Tprojection:
     def _cat2all_prep(self):
 
         if self.nb_modalities:
-            self.encoding = ut.get_encoding(self.df, self.target, self.feature, self.nb_modalities)
+            self.encoding = ut.get_encoding(self.df, 'target_san', self.feature, self.nb_modalities)
         else:
             self.encoding = {v: v for v in self.df[self.feature].unique()}
         self.df[self.feature + "_encoded"] = self.df[self.feature].map(self.encoding)
-        dg = self._bootstrap(self.feature)
+        dg = self._bootstrap(self.feature + "_encoded")
         dg['baseline'] = self.df["target_san"].mean() 
         dg.sort_values(by="count", ascending=False, inplace=True)
         segment = self.feature + "_encoded" 
@@ -145,6 +134,8 @@ class Tprojection:
                    color="white", boxprops=dict(alpha=0.5))
 
         plt.xlim([-0.6, len(self.dg)-0.5])
+        ax1.set_xlabel(self.feature)
+        ax1.set_ylabel("count")
 
     def _con2bin_plot(self):
         """
