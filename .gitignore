@@ -105,5 +105,5 @@ ENV/
 .vscode/
 
 # perso
-data/   
-.DS_Store    
+data/
+.DS_Store
