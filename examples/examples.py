@@ -36,4 +36,3 @@ tproj.plot()
 print(tproj.encoding) # contains the mapping between the original modalities and the encoded 
 ##}
 
-
