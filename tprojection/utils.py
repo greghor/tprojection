@@ -1,21 +1,8 @@
 import pandas as pd
 import numpy as np
 
+##{
 def is_continuous(s, thresh):
-    """
-    Parameters
-    ----------------
-
-    c : pd series
-        c is
-    thresh : vartype
-        thresh is
-
-    Returns
-    ----------------
-    Boolean
-
-    """
     try:
        _ = pd.to_numeric(s)
     except:
@@ -25,16 +12,13 @@ def is_continuous(s, thresh):
     else:
         return True
 
-##{ test with titanic dataset
-feature = 'cabin'
-df = load_data("titanic").fillna(value={feature: 'na'})
-target = 'survived'
-nb_modalities = 5
-##}
-def get_encoding(self, df, target, feature, nb_modalities):
+    ##}
 
-    assert(nb_modalities < len(df[feature].unique()), "the number of encoded modalities shall be lower than the number of unique element in {}".format(self.feature))
-    assert df[feature].isna() == 0, "feature column shall not contain missing value"
+##{     
+def get_encoding(df, target, feature, nb_modalities):
+
+    assert nb_modalities < len(df[feature].unique()) , "the number of encoded modalities shall be lower than the number of unique element in {}".format(feature)
+    assert df[feature].isna().sum() == 0, "feature column shall not contain missing value"
     dg = df.groupby(feature).agg({target: ["count", "mean"]})
     dg.columns = ["count", "mean"]
     dg["cumratio"] = dg["count"].cumsum()/dg["count"].sum()
@@ -57,6 +41,5 @@ def get_encoding(self, df, target, feature, nb_modalities):
         mymap["g" + str(ii)].append(row[0])
     low_freq_map = {moda: k for k, vals in mymap.items() for moda in vals}
 
-    return dict(high_freq_map, low_freq_map)
-
-
+    return dict(high_freq_map, **low_freq_map)
+##}
