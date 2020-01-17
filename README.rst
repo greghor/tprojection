@@ -13,12 +13,6 @@ tprojection
         :target: https://tprojection.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-https://travis-ci.com/greghor/tprojection.svg?branch=master
-
-
-study univariate relations
-
-
 * Free software: MIT license
 * Documentation: https://tprojection.readthedocs.io.
 
