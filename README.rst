@@ -13,6 +13,9 @@ tprojection
         :target: https://tprojection.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://img.shields.io/codecov/c/github/greghor/tprojection   
+        :alt: Codecov
+
 * Free software: MIT license
 * Documentation: https://tprojection.readthedocs.io.
 
