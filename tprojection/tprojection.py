@@ -145,7 +145,8 @@ class Tprojection:
         fig, ax1 = plt.subplots()
         pos = self.df.query("target_san == 1")[self.feature]
         neg = self.df.query("target_san == 0")[self.feature]
-        bins = np.linspace(min(pos), max(pos), np.round(len(pos)**0.5))
+        print(np.round(len(pos)**0.5))
+        bins = np.linspace(pos.min(), pos.max(), int(np.round(len(pos)**0.5)))
         sns.distplot(neg, kde=False, norm_hist=True, bins=bins, ax=ax1)
         sns.distplot(pos, kde=False, norm_hist=True, bins=bins, ax=ax1)
         plt.legend(["neg. ({})".format(len(neg)), "pos. ({})".format(len(pos))])
