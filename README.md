@@ -3,9 +3,9 @@
 
 <div class="row">
 
-<img src="examples/survived_cabin.png" height="250" width="250">
-<img src="examples/survived_fare.png" height="250" width="250">
-<img src="examples/fare_cabin.png" height="250" width="250">
+<img src="examples/survived_cabin.png" height="250" width="400">
+<img src="examples/survived_fare.png" height="250" width="400">
+<img src="examples/fare_cabin.png" height="250" width="400">
 
 <div class="row">
 </div>
@@ -13,7 +13,7 @@
 
 [![pypi] (https://img.shields.io/pypi/v/tprojection.svg)] (https://pypi.python.org/pypi/tprojection)
 [![Build Status](https://travis-ci.org/mwaskom/seaborn.svg?branch=master)](https://travis-ci.org/mwaskom/seaborn)
-[![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)]
+![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
 * Free software: MIT license
