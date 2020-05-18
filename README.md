@@ -12,8 +12,8 @@
 </div>
 
 
-[![pypi] (https://img.shields.io/pypi/v/tprojection.svg)] (https://pypi.python.org/pypi/tprojection)
-[![Build Status](https://travis-ci.org/mwaskom/seaborn.svg?branch=master)](https://travis-ci.org/mwaskom/seaborn)
+[![Build
+Status](https://travis-ci.org/greghor/tprojection.svg?branch=master)](https://travis-ci.org/greghor/tprojection)
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
