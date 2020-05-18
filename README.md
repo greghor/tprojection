@@ -3,9 +3,10 @@
 
 <div class="row">
 
-<img src="examples/survived_cabin.png" height="250" width="400">
-<img src="examples/survived_fare.png" height="250" width="400">
-<img src="examples/fare_cabin.png" height="250" width="400">
+<img src="examples/survived_cabin.png" height="250" width="385">
+<img src="examples/fare_cabin.png" height="250" width="385">
+<img src="examples/survived_fare.png" height="250" width="385">
+<img src="examples/survived_fare.png" height="250" width="385">
 
 <div class="row">
 </div>
