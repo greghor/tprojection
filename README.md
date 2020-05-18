@@ -13,7 +13,7 @@
 
 
 [![Build
-Status](https://travis-ci.org/greghor/tprojection.svg?branch=master)](https://travis-ci.org/greghor/tprojection)
+Status](https://travis-ci.org/greghor/tprojection.svg)](https://travis-ci.org/greghor/tprojection)
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
