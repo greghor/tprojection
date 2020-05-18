@@ -6,7 +6,7 @@
 import pytest
 from numpy.random import *
 import pandas as pd
-from tprojection.tprojection import Tprojection
+from tprojection.core import Tprojection
 from tprojection.datasets import load_data
 ##}
 
