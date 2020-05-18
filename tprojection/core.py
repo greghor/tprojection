@@ -165,7 +165,7 @@ class Tprojection:
     def _con2con_plot(self):
         """ display a simple scatter plot if both target and feature are continuous
         """
-        self.ax1.scatter(self.df[self.feature], self.df[self.target])
+        self.ax1.scatter(self.df[self.feature], self.df[self.target], alpha=0.5)
         self.ax1.set_xlabel(self.feature)
         self.ax1.set_ylabel(self.target)
 
