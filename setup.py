@@ -4,13 +4,13 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = [ "pandas==0.25.3", "numpy==1.17.4", "seaborn==0.9.0", "pytest==5.3.2", "matplotlib==3.1.2"]
 
 setup_requirements = ['pytest-runner', ]
 
