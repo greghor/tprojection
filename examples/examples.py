@@ -49,6 +49,8 @@ plt.savefig(fig_dir + f"{target}_{feature}.png")
 
 ##{ example with target, feature being both continuous. Not the most interesting 
 # situation, since we use a simple scatter plot here.
+target = "fare"
+feature = "age"
 tproj = Tprojection(df, "fare", "age", nb_modalities=10)
 tproj.plot()
 ##}
