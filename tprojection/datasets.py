@@ -15,10 +15,11 @@ def load_data(dataset):
         required dataset
 
     Returns
-    pandas  dataframe
     ----------------
 
+    pandas  DataFrame
     """
+
     module_path = dirname(__file__)
     return pd.read_csv(module_path + "/{}.csv".format(dataset))
 
