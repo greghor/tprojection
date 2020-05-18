@@ -17,7 +17,7 @@
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
-Tprojection stands for target projection. This library allows you to visually inspect the relation between a dependent variable (the target) and a predictor in a meaningful way. This library is particularly convenient when it is difficult to compute a traditionnal correlation coefficient, for instance when either the target or the predictor is categorical.
+This library allows you to visually inspect the relation between a dependent variable (the target) and a predictor in a meaningful way. This library is particularly convenient when it is difficult to compute a traditionnal correlation coefficient, for instance when the target and the predictor are categorical.
 And by the way, Tprojection stands for target projection.
 
 
@@ -34,7 +34,7 @@ And by the way, Tprojection stands for target projection.
 
 ## Advanced usage
 
-You can find several examples of more advanced tprojection functionalities in `examples/examples.ipynb`
+You can find several examples depicting more advanced functionalities in `examples/examples.ipynb`
 
 ## Credits
 
