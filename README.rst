@@ -3,25 +3,15 @@ tprojection
 ===========
 
 
-.. raw:: html
-
-   <div class="row">
-
-   <img src="examples/survived_cabin.png" height="250" width="385">
-   <img src="examples/fare_cabin.png" height="250" width="385">
-   <img src="examples/survived_fare.png" height="250" width="385">
-   <img src="examples/fare_age.png" height="250" width="385">
-
-   <div class="row">
-   </div>
+.. image:: https://badge.fury.io/py/tprojection.svg
+   :target: https://badge.fury.io/py/tprojection
+   :alt: PyPI version
 
 
-`
 .. image:: https://travis-ci.com/greghor/tprojection.svg?branch=master
-   :target: https://travis-ci.com/greghor/tprojection.svg?branch=master
-   :alt: Build
-Status
- <https://travis-ci.com/github/greghor/tprojection>`_
+   :target: https://travis-ci.com/github/greghor/tprojection
+   :alt: Build Status
+
 
 .. image:: https://img.shields.io/codecov/c/github/greghor/tprojection
    :target: https://img.shields.io/codecov/c/github/greghor/tprojection
