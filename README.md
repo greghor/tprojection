@@ -11,7 +11,7 @@
 <div class="row">
 </div>
 
-
+![2by2](docs/2by2.png)
 [![PyPI version](https://badge.fury.io/py/tprojection.svg)](https://badge.fury.io/py/tprojection)
 [![Build Status](https://travis-ci.com/greghor/tprojection.svg?branch=master)](https://travis-ci.com/github/greghor/tprojection)
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
