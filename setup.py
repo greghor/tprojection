@@ -37,6 +37,7 @@ setup(
 #    long_description=readme + '\n\n' + history,
     long_description=readme,
     include_package_data=True,
+    package_data = {"":["tprojection/titanic.csv"]}
     keywords='tprojection',
     name='tprojection',
     packages=find_packages(),
