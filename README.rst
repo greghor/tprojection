@@ -17,16 +17,28 @@ tprojection
         :alt: Codecov
 
 * Free software: MIT license
-* Documentation: https://tprojection.readthedocs.io.
+
+This library allows you to investigate the relation between a dependent variable and a predictor, irrepectively of their types (continuous vs categorical). This library is particularly useful
+when both the dependent variable and the predictor are categorical. 
 
 
-Features
+Installation
 --------
 
-* TODO
+    pip install tprojection
 
-Credits
+Basic usage
 -------
+
+     from tprojection import Tprojection
+
+     tproj = Tprojection(df, "target", "predictor")
+     tproj.plot()
+
+Advanced usage
+--------
+
+You can find several examples of more advanced tprojection functionalities in examples/examples.ipynb
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
