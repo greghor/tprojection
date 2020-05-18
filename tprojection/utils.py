@@ -3,6 +3,19 @@ import numpy as np
 
 ##{
 def is_continuous(s, thresh):
+    """
+    Parameters
+    ----------------
+
+    s : pandas Series
+    thresh : float
+
+    Returns
+    ----------------
+
+    Boolean
+
+    """
     try:
        _ = pd.to_numeric(s)
     except:
@@ -16,6 +29,20 @@ def is_continuous(s, thresh):
 
 ##{     
 def get_encoding(df, target, feature, nb_modalities):
+    """
+    Parameters
+    ----------------
+
+    df : pandas DataFrame
+    target : str
+    feature : str
+    nb_modalities : int
+
+    Returns
+    ----------------
+
+    Dict()
+    """
 
     assert nb_modalities < len(df[feature].unique()) , "the number of encoded modalities shall be lower than the number of unique element in {}".format(feature)
     assert df[feature].isna().sum() == 0, "feature column shall not contain missing value"
