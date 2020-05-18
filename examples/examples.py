@@ -2,7 +2,7 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 import pdb
-from tprojection.core import Tprojection
+from tprojection import Tprojection
 from tprojection.datasets import load_data
 ##}
 
