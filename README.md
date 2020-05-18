@@ -6,7 +6,7 @@
 <img src="examples/survived_cabin.png" height="250" width="385">
 <img src="examples/fare_cabin.png" height="250" width="385">
 <img src="examples/survived_fare.png" height="250" width="385">
-<img src="examples/survived_fare.png" height="250" width="385">
+<img src="examples/fare_age.png" height="250" width="385">
 
 <div class="row">
 </div>
@@ -17,10 +17,8 @@
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
-* Free software: MIT license
-
-This library allows you to investigate the relation between a dependent variable and a predictor, irrepectively of their types (continuous vs categorical). This library is particularly useful
-when both the dependent variable and the predictor are categorical. 
+Tprojection stands for target projection. This library allows you to visually inspect the relation between a dependent variable (the target) and a predictor in a meaningful way. This library is particularly convenient when it is difficult to compute a traditionnal correlation coefficient, for instance when either the target or the predictor is categorical.
+And by the way, Tprojection stands for target projection.
 
 
 ## Installation
