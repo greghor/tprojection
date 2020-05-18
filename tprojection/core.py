@@ -9,8 +9,7 @@ import tprojection.utils as ut
 
 __all__ = ["Tprojection"]
 
-font = {'family' : 'normal',
-'size'   : 12}
+font = {'size'   : 12}
 
 matplotlib.rc('font', **font)
 
