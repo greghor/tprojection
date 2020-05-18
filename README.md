@@ -3,21 +3,22 @@
 
 <div class="row">
 
-<img src="examples/survived_cabin.png" height="250" width="385">
-<img src="examples/fare_cabin.png" height="250" width="385">
-<img src="examples/survived_fare.png" height="250" width="385">
-<img src="examples/fare_age.png" height="250" width="385">
+<img src="examples/survived_cabin.png" height="250" width="360">
+<img src="examples/fare_cabin.png" height="250" width="360">
+<img src="examples/survived_fare.png" height="250" width="360">
+<img src="examples/fare_age.png" height="250" width="360">
 
 <div class="row">
 </div>
 
-
-[![Build
-Status](https://travis-ci.com/greghor/tprojection.svg?branch=master)](https://travis-ci.com/github/greghor/tprojection)
+[![PyPI version](https://badge.fury.io/py/tprojection.svg)](https://badge.fury.io/py/tprojection)
+[![Build Status](https://travis-ci.com/greghor/tprojection.svg?branch=master)](https://travis-ci.com/github/greghor/tprojection)
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
-This library allows you to visually inspect the relation between a dependent variable (the target) and a predictor in a meaningful way. This library is particularly convenient when it is difficult to compute a traditionnal correlation coefficient, for instance when the target and the predictor are categorical.
+This library allows you to visually inspect the relation between a dependent variable (the
+target) and a predictor in a meaningful way. This library is particularly convenient when the
+target and/or the predictor are categorical, ie when it is difficult to compute a traditionnal correlation coefficient.
 And by the way, Tprojection stands for target projection.
 
 
