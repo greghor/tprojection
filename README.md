@@ -3,18 +3,17 @@
 
 <div class="row">
 
-<img src="examples/survived_cabin.png" height="250" width="385">
-<img src="examples/fare_cabin.png" height="250" width="385">
-<img src="examples/survived_fare.png" height="250" width="385">
-<img src="examples/fare_age.png" height="250" width="385">
+<img src="examples/survived_cabin.png" height="250" width="360">
+<img src="examples/fare_cabin.png" height="250" width="360">
+<img src="examples/survived_fare.png" height="250" width="360">
+<img src="examples/fare_age.png" height="250" width="360">
 
 <div class="row">
 </div>
 
 
 [![PyPI version](https://badge.fury.io/py/tprojection.svg)](https://badge.fury.io/py/tprojection)
-[![Build
-Status](https://travis-ci.com/greghor/tprojection.svg?branch=master)](https://travis-ci.com/github/greghor/tprojection)
+[![Build Status](https://travis-ci.com/greghor/tprojection.svg?branch=master)](https://travis-ci.com/github/greghor/tprojection)
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
