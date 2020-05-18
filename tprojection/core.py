@@ -56,6 +56,9 @@ class Tprojection:
         self._sanitize_target()
 
     def plot(self):
+        self.fig, self.ax1 = plt.subplots()
+        self.ax2 = self.ax1.twinx()
+
         if self.feature_type == "categorical":
             self._cat2all_prep()
             show_boxplot = np.where(self.target_type == "categorical", 0, 1)
@@ -120,47 +123,43 @@ class Tprojection:
 
 
     def _cat2all_plot(self, show_boxplot=False):
-        fig, ax1 = plt.subplots()
         self.dg["count"].plot(kind="bar", color="blue", ax=ax1, alpha=0.5)
-        plt.xticks(rotation=45)
-        ax2 = ax1.twinx()
+        self.ax1.set_xticks(rotation=45)
         self.dg["mean"].plot(color="red", marker="o", markersize=5, linewidth=2,  ax=ax2)
         self.dg["min"].plot(color="red", linewidth=1, linestyle="--", ax=ax2)
         self.dg["max"].plot(color="red", linewidth=1, linestyle="--", ax=ax2)
-        ax2.fill_between(ax2.get_xticks(), self.dg["min"], self.dg["max"], facecolor="red", alpha=0.2)
+        self.ax2.fill_between(self.ax2.get_xticks(), self.dg["min"], self.dg["max"], facecolor="red", alpha=0.2)
 
-        self.dg["baseline"].plot(color="black", linestyle="--", linewidth=2, ax=ax2)
+        self.dg["baseline"].plot(color="black", linestyle="--", linewidth=2, ax=self.ax2)
 
         if show_boxplot:
             sns.boxplot(x=self.segment, y=self.target, data=self.df, order=self.dg.index, 
                    color="white", boxprops=dict(alpha=0.5))
 
-        plt.xlim([-0.6, len(self.dg)-0.5])
-        ax1.set_xlabel(self.feature)
-        ax1.set_ylabel("count")
+        self.ax1.set_xlim([-0.6, len(self.dg)-0.5])
+        self.ax1.set_xlabel(self.feature)
+        self.ax1.set_ylabel("count")
 
     def _con2bin_plot(self):
         """
         plot two histograms, one for each class of the target if the target is 
         binary and the feature continuous
         """
-        fig, ax1 = plt.subplots()
         pos = self.df.query("target_san == 1")[self.feature]
         neg = self.df.query("target_san == 0")[self.feature]
-        print(np.round(len(pos)**0.5))
         lb = np.min([pos.min(), neg.min()])
         ub = np.max([pos.max(), neg.max()])
         bins = np.linspace(lb, ub, int(np.round(len(pos)**0.5)))
-        sns.distplot(neg, kde=False, norm_hist=True, bins=bins, ax=ax1)
-        sns.distplot(pos, kde=False, norm_hist=True, bins=bins, ax=ax1)
-        plt.legend(["neg. ({})".format(len(neg)), "pos. ({})".format(len(pos))])
+        sns.distplot(neg, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
+        sns.distplot(pos, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
+        self.ax1.legend(["neg. ({})".format(len(neg)), "pos. ({})".format(len(pos))])
 
     def _con2con_plot(self):
         """ display a simple scatter plot if both target and feature are continuous
         """
-        plt.scatter(df[self.feature], df[self.target])
-        plt.xlabel(self.feature)
-        plt.ylabel(self.target)
+        self.ax1.scatter(df[self.feature], df[self.target])
+        self.ax1.set_xlabel(self.feature)
+        self.ax1.set_ylabel(self.target)
 
 ##}
 
