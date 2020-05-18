@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ "pandas==0.25.3", "numpy==1.17.4", "seaborn==0.9.0", "pytest==5.3.2", "matplotlib==3.1.2"]
+requirements = [ "pandas>=0.22", "numpy>=1.13.3", "seaborn>=0.9.0", "pytest>=5.3.2", "matplotlib>=3.1.2"]
 
 setup_requirements = ['pytest-runner', ]
 
@@ -37,7 +37,6 @@ setup(
 #    long_description=readme + '\n\n' + history,
     long_description=readme,
     include_package_data=True,
-    package_data = {"":["tprojection/titanic.csv"]}
     keywords='tprojection',
     name='tprojection',
     packages=find_packages(),
@@ -45,6 +44,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/greghor/tprojection',
-    version='0.2.2',
+    version='0.2.3',
     zip_safe=False,
 )
