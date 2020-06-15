@@ -160,13 +160,21 @@ class Tprojection:
         sns.distplot(neg, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
         sns.distplot(pos, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
         self.ax1.legend(["neg. ({})".format(len(neg)), "pos. ({})".format(len(pos))])
+        self.ax1.set_ylabel("density")
+        self.ax2.set_visible(False)
 
     def _con2con_plot(self):
         """ display a simple scatter plot if both target and feature are continuous
         """
         self.ax1.scatter(self.df[self.feature], self.df[self.target], alpha=0.5)
+        corrcoef = np.round(self.df[[self.feature, self.target]].corr().values[0,1], 3)
+        sns.regplot(x=self.feature, y=self.target, data=self.df, 
+                    ax=self.ax1, scatter_kws={'alpha': 0.5},
+                    line_kws={"color": "black", "linestyle": "--"})
+        self.ax1.text(0.95, 0.95, f"corrcoef: {corrcoef}", horizontalalignment='right', verticalalignment='top', transform=self.ax1.transAxes)
         self.ax1.set_xlabel(self.feature)
         self.ax1.set_ylabel(self.target)
+        self.ax2.set_visible(False)
 
 ##}
 
