@@ -23,7 +23,7 @@ class Tprojection:
     def __init__(self, df, target, feature,
                  target_type="", feature_type="",
                  target_modality="",
-                 nb_modalities=0, n_estimators=1,
+                 nb_buckets=0, n_estimators=1,
                  continuous_threshold=0.05):
         """
         Parameters
@@ -37,8 +37,8 @@ class Tprojection:
            can take the values "categorical" or "continuous"
         target_modality: string
             will be used for multiclass problem (not implemented yet)
-        nb_modalities: int (0)
-            if > 0, encode feature on nb_modalities dummy modalities if the cardinality is to high
+        nb_buckets: int (0)
+            if > 0, encode feature on nb_buckets dummy modalities if the cardinality is to high
         n_estimators: int (1)
             if > 1, use boostrapping to evaluate estimator variance (only relevant for categorical target and features)
         """
@@ -50,7 +50,7 @@ class Tprojection:
         self.target_type =  target_type
         self.feature_type = feature_type
         self.target_modality = target_modality
-        self.nb_modalities = nb_modalities
+        self.nb_buckets = nb_modalities
         self.continuous_threshold = continuous_threshold
         self.n_estimators = n_estimators
 
@@ -113,8 +113,8 @@ class Tprojection:
 
     def _cat2all_prep(self):
 
-        if self.nb_modalities:
-            self.encoding = ut.get_encoding(self.df, 'target_san', self.feature, self.nb_modalities)
+        if self.nb_buckets:
+            self.encoding = ut.get_encoding(self.df, 'target_san', self.feature, self.nb_buckets)
         else:
             self.encoding = {v: v for v in self.df[self.feature].unique()}
         self.df[self.feature + "_encoded"] = self.df[self.feature].map(self.encoding)
