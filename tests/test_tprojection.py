@@ -45,7 +45,6 @@ def test_infer_age_fare_as_continuous():
     ##}
 
 
-
 ##{
 def test_categorical_feature_type_turned_to_obj():
     df = pd.DataFrame()
@@ -55,12 +54,12 @@ def test_categorical_feature_type_turned_to_obj():
     tproj  = Tprojection(df, 'target', 'feature')
     assert isinstance(tproj.df.target.dtype, object), "feature type shall have turned to object"
     tproj._cat2all_prep()
-    assert isinstance(tproj.dg.index.dtype, object), "plotted data index type shall bject"
+    assert isinstance(tproj.dg.index.dtype, object), "plotted data index type shall object"
 ##}
 
 
 ##{
 df = load_data("titanic")
 target = "survived"
-tproj = Tprojection(df, target, "name", nb_modalities=10)
+tproj = Tprojection(df, target, "name", nb_buckets=10)
 ##}
