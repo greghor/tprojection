@@ -28,7 +28,7 @@ def is_continuous(s, thresh):
     ##}
 
 ##{     
-def get_encoding(df, target, feature, nb_modalities):
+def get_encoding(df, target, feature, nb_buckets):
     """
     Parameters
     ----------------
@@ -36,7 +36,7 @@ def get_encoding(df, target, feature, nb_modalities):
     df : pandas DataFrame
     target : str
     feature : str
-    nb_modalities : int
+    nb_buckets : int
 
     Returns
     ----------------
@@ -44,7 +44,7 @@ def get_encoding(df, target, feature, nb_modalities):
     Dict()
     """
 
-    assert nb_modalities < len(df[feature].unique()) , "the number of encoded modalities shall be lower than the number of unique element in {}".format(feature)
+    assert nb_buckets < len(df[feature].unique()) , "the number of encoded modalities shall be lower than the number of unique element in {}".format(feature)
     assert df[feature].isna().sum() == 0, "feature column shall not contain missing value"
     dg = df.groupby(feature).agg({target: ["count", "mean"]})
     dg.columns = ["count", "mean"]
@@ -52,16 +52,16 @@ def get_encoding(df, target, feature, nb_modalities):
     dg["ratio"] = dg["count"]/dg["count"].sum()
 
     # isolate modality with high frequency
-    thresh_freq = 1/nb_modalities/2
+    thresh_freq = 1/nb_buckets/2
     high_freq_modalities = list(dg[dg.ratio > thresh_freq].index)
     nb_high_freq_modalities = len(high_freq_modalities)
     high_freq_map = {v: v for v in high_freq_modalities}
 
     # regroup low frequency modalities
     low_freq_dg =  dg[dg.ratio <= thresh_freq]
-    slicer = np.linspace(0, 1, nb_modalities + 1 - nb_high_freq_modalities)
+    slicer = np.linspace(0, 1, nb_buckets + 1 - nb_high_freq_modalities)
     ii = 1
-    mymap = {"g" + str(ii+1): [] for ii in range(nb_modalities)}
+    mymap = {"g" + str(ii+1): [] for ii in range(nb_buckets)}
     for row in low_freq_dg.iterrows():
         if row[1]["cumratio"] > slicer[ii]:
             ii+=1

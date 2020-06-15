@@ -50,7 +50,7 @@ class Tprojection:
         self.target_type =  target_type
         self.feature_type = feature_type
         self.target_modality = target_modality
-        self.nb_buckets = nb_modalities
+        self.nb_buckets = nb_buckets
         self.continuous_threshold = continuous_threshold
         self.n_estimators = n_estimators
 
