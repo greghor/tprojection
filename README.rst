@@ -47,6 +47,12 @@ Advanced usage
 
 You can find several examples depicting more advanced functionalities in ``examples/examples.ipynb``
 
+
+Documentation
+-------------
+
+Please find a light documentation [here](https://tprojection.readthedocs.io/en/latest/?)
+
 Credits
 -------
 
