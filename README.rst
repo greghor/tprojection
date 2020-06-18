@@ -51,7 +51,7 @@ You can find several examples depicting more advanced functionalities in ``examp
 Documentation
 -------------
 
-Please find a light documentation [here](https://tprojection.readthedocs.io/en/latest/?)
+Please find a light documentation `here <https://tprojection.readthedocs.io/en/latest/?>`_
 
 Credits
 -------
