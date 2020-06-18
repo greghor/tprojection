@@ -4,6 +4,8 @@ import numpy as np
 ##{
 def is_continuous(s, thresh):
     """
+    Return true if the series is continuous
+
     Parameters
     ----------------
 
@@ -30,6 +32,8 @@ def is_continuous(s, thresh):
 ##{     
 def get_encoding(df, target, feature, nb_buckets):
     """
+    Encode the feature modalities on a maximum of nb_buckets 
+
     Parameters
     ----------------
 

@@ -11,10 +11,22 @@ Welcome to tprojection's documentation!
    modules
    contributing
    authors
-   history
 
 Indices and tables
 ==================
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+==================
+tprojection
+==================
+
+.. automodule:: tprojection.core
+   :members:
+
+.. automodule:: tprojection.utils
+   :members:
+
+.. automodule:: tprojection.datasets
+   :members:

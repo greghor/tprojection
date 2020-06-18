@@ -18,6 +18,22 @@ class Tprojection:
     """
     this class allows to study the relation between the target and a single feature, with the specificity to display a chart type adapted
     to the type of the input variables (categorical or continuous)
+
+    Parameters
+    ----------
+    df: pandas DataFrame
+    target: string
+    feature: string
+    target_type: string
+       can take the values "categorical" or "continuous"
+    feature_type: string
+       can take the values "categorical" or "continuous"
+    target_modality: string
+        will be used for multiclass problem (not implemented yet)
+    nb_buckets: int (0)
+        if > 0, encode feature on nb_buckets dummy modalities if the cardinality is to high
+    n_estimators: int (1)
+        if > 1, use boostrapping to evaluate estimator variance (only relevant for categorical target and features)
     """
 
     def __init__(self, df, target, feature,
@@ -25,24 +41,6 @@ class Tprojection:
                  target_modality="",
                  nb_buckets=0, n_estimators=1,
                  continuous_threshold=0.05):
-        """
-        Parameters
-        ----------
-        df: pandas DataFrame
-        target: string
-        feature: string
-        target_type: string
-           can take the values "categorical" or "continuous"
-        feature_type: string
-           can take the values "categorical" or "continuous"
-        target_modality: string
-            will be used for multiclass problem (not implemented yet)
-        nb_buckets: int (0)
-            if > 0, encode feature on nb_buckets dummy modalities if the cardinality is to high
-        n_estimators: int (1)
-            if > 1, use boostrapping to evaluate estimator variance (only relevant for categorical target and features)
-        """
-
 
         self.df = df.copy()
         self.target = target
