@@ -37,6 +37,10 @@ And by the way, Tprojection stands for target projection.
 
 You can find several examples depicting more advanced functionalities in `examples/examples.ipynb`
 
+## Documentation
+
+Please find a light documentation [here](https://tprojection.readthedocs.io/en/latest/?)
+
 ## Credits
 
 This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage) project template.

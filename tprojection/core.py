@@ -18,31 +18,29 @@ class Tprojection:
     """
     this class allows to study the relation between the target and a single feature, with the specificity to display a chart type adapted
     to the type of the input variables (categorical or continuous)
+
+    Parameters
+    ----------
+    df: pandas DataFrame
+    target: string
+    feature: string
+    target_type: string
+       can take the values "categorical" or "continuous"
+    feature_type: string
+       can take the values "categorical" or "continuous"
+    target_modality: string
+        will be used for multiclass problem (not implemented yet)
+    nb_buckets: int (0)
+        if > 0, encode feature on nb_buckets dummy modalities if the cardinality is to high
+    n_estimators: int (1)
+        if > 1, use boostrapping to evaluate estimator variance (only relevant for categorical target and features)
     """
 
     def __init__(self, df, target, feature,
                  target_type="", feature_type="",
                  target_modality="",
-                 nb_modalities=0, n_estimators=1,
+                 nb_buckets=0, n_estimators=1,
                  continuous_threshold=0.05):
-        """
-        Parameters
-        ----------
-        df: pandas DataFrame
-        target: string
-        feature: string
-        target_type: string
-           can take the values "categorical" or "continuous"
-        feature_type: string
-           can take the values "categorical" or "continuous"
-        target_modality: string
-            will be used for multiclass problem (not implemented yet)
-        nb_modalities: int (0)
-            if > 0, encode feature on nb_modalities dummy modalities if the cardinality is to high
-        n_estimators: int (1)
-            if > 1, use boostrapping to evaluate estimator variance (only relevant for categorical target and features)
-        """
-
 
         self.df = df.copy()
         self.target = target
@@ -50,7 +48,7 @@ class Tprojection:
         self.target_type =  target_type
         self.feature_type = feature_type
         self.target_modality = target_modality
-        self.nb_modalities = nb_modalities
+        self.nb_buckets = nb_buckets
         self.continuous_threshold = continuous_threshold
         self.n_estimators = n_estimators
 
@@ -113,8 +111,8 @@ class Tprojection:
 
     def _cat2all_prep(self):
 
-        if self.nb_modalities:
-            self.encoding = ut.get_encoding(self.df, 'target_san', self.feature, self.nb_modalities)
+        if self.nb_buckets:
+            self.encoding = ut.get_encoding(self.df, 'target_san', self.feature, self.nb_buckets)
         else:
             self.encoding = {v: v for v in self.df[self.feature].unique()}
         self.df[self.feature + "_encoded"] = self.df[self.feature].map(self.encoding)
@@ -160,13 +158,21 @@ class Tprojection:
         sns.distplot(neg, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
         sns.distplot(pos, kde=False, norm_hist=True, bins=bins, ax=self.ax1)
         self.ax1.legend(["neg. ({})".format(len(neg)), "pos. ({})".format(len(pos))])
+        self.ax1.set_ylabel("density")
+        self.ax2.set_visible(False)
 
     def _con2con_plot(self):
         """ display a simple scatter plot if both target and feature are continuous
         """
         self.ax1.scatter(self.df[self.feature], self.df[self.target], alpha=0.5)
+        corrcoef = np.round(self.df[[self.feature, self.target]].corr().values[0,1], 3)
+        sns.regplot(x=self.feature, y=self.target, data=self.df, 
+                    ax=self.ax1, scatter_kws={'alpha': 0.5},
+                    line_kws={"color": "black", "linestyle": "--"})
+        self.ax1.text(0.95, 0.95, f"corrcoef: {corrcoef}", horizontalalignment='right', verticalalignment='top', transform=self.ax1.transAxes)
         self.ax1.set_xlabel(self.feature)
         self.ax1.set_ylabel(self.target)
+        self.ax2.set_visible(False)
 
 ##}
 

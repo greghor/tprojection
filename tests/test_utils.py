@@ -49,7 +49,7 @@ def test_unbalanced_mod_freq_encoding():
     n_obs = 1000
     df['feature'] = rd.choice(mod, size=n_obs, p=p)
     df['target'] = rd.choice([0, 1], size=n_obs, p=[0.9, 0.1])
-    mymap = get_encoding(df, 'target', 'feature', nb_modalities=5)
+    mymap = get_encoding(df, 'target', 'feature', nb_buckets=5)
     def myassert(x):
         assert mymap[x] == x, '{} shall be mapped to {}'.format(x, x)
     myassert('m0')
@@ -62,11 +62,11 @@ def test_balanced_mod_freq_encoding():
     df = pd.DataFrame()
     mod = ['m' + str(int(x)) for x in np.linspace(0, 99, 100)] 
     n_obs = 1000
-    nb_modalities = 5
+    nb_buckets = 5
     df['feature'] = rd.choice(mod, size=n_obs)
     df['target'] = rd.choice([0, 1], size=n_obs, p=[0.9, 0.1])
-    mymap = get_encoding(df, 'target', 'feature', nb_modalities=nb_modalities)
-    assert len(set(mymap.values())) == nb_modalities, "nb of encoding shall be equal to nb_modalities"
+    mymap = get_encoding(df, 'target', 'feature', nb_buckets=nb_buckets)
+    assert len(set(mymap.values())) == nb_buckets, "nb of encoding shall be equal to nb_buckets"
     ##}
 
 

@@ -26,20 +26,20 @@ tproj.plot()
 ##}
 
 ##{ example of target and feature being both categorical. Here, we use a dummy encoding since the number of original features modalities is too high
-tproj = Tprojection(df, target, "cabin", feature_type="categorical", nb_modalities=10, n_estimators=100)
+tproj = Tprojection(df, target, "cabin", feature_type="categorical", nb_buckets=10, n_estimators=100)
 tproj.plot()
 print(tproj.encoding) # contains the mapping between the original modalities and the encoded modalities
 ##}
 
 ##{ example with target and feature being continuous and categorical, resp.
-tproj = Tprojection(df, "fare", "cabin", feature_type="categorical", nb_modalities=10)
+tproj = Tprojection(df, "fare", "cabin", feature_type="categorical", nb_buckets=10)
 tproj.plot()
 print(tproj.encoding) # contains the mapping between the original modalities and the encoded 
 ##}
 
 ##{ example with target and feature being both continuous. Not the most interesting 
 # situation, since we use a simple scatter plot here.
-tproj = Tprojection(df, "fare", "age", nb_modalities=10)
+tproj = Tprojection(df, "fare", "age", nb_buckets=10)
 tproj.plot()
 ##}
 
