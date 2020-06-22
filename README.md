@@ -16,7 +16,7 @@
 ![Code cov](https://img.shields.io/codecov/c/github/greghor/tprojection)
 
 
-This library allows you to visually inspect the univariate relation between a dependent variable (the
+This library allows you to visually inspect the bivariate relation between a dependent variable (the
 target) and any feature in a meaningful way. This library is particularly convenient when the
 target and/or the feature are categorical, ie when it is difficult to compute a traditionnal correlation coefficient.
 And by the way, Tprojection stands for target projection.
